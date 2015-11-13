@@ -71,7 +71,7 @@ namespace Take.Gamification.Controllers
                     ["{url}"] = $"{Request.Url.Host}/Merits"
                 });
 
-                Thread.Sleep(2);
+                Thread.Sleep(TimeSpan.FromSeconds(2));
                 return Content("Mérito adicionado com sucesso.");
             }
             catch (Exception ex)
