@@ -27,10 +27,14 @@
         {
             <tr>
                 <td>
-                    @Html.Gravatar(item.Mail, 50, new { Title = item.Mail = item.Mail, style = "padding: 15px;" })
+                    <a href="@Url.Action("Details", new { id = item.Id })">
+                        @Html.Gravatar(item.Mail, 50, new { Title = item.Mail = item.Mail, style = "padding: 15px;" })
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    <a href="@Url.Action("Details", new { id = item.Id })">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Mail)

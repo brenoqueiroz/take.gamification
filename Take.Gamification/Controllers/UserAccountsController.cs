@@ -22,6 +22,12 @@ namespace Take.Gamification.Controllers
             return View(users);
         }
 
+        public ActionResult Details(int id)
+        {
+            var user = _context.Users.First(x => x.Id == id);
+            return View(user);
+        }
+
         public ContentResult DoMerit(int meritId, int userId)
         {
             try
@@ -41,7 +47,26 @@ namespace Take.Gamification.Controllers
                 _context.UserMerits.Add(userMerit);
                 _context.SaveChanges();
 
-                Thread.Sleep(TimeSpan.FromSeconds(5));
+                var concederMerit = _context.Merits.First(x => x.Name.Equals(MeritsConst.ConcederMerito));
+                var concederMeritUser = new UserMerit
+                {
+                    MeritId = concederMerit.Id,
+                    Value = concederMerit.Value,
+                    TargetUserId = _context.Users.First(x => x.Mail == User.Identity.Name).Id
+                };
+
+                _context.UserMerits.Add(concederMeritUser);
+                _context.SaveChanges();
+
+                SendEmail.SendMerito(user.Mail, new Dictionary<string, string>
+                {
+                    ["{Name}"] = user.Name,
+                    ["{Owner}"] = owner.Name,
+                    ["{Merit}"] = merit.Name,
+                    ["{Value}"] = merit.Value.ToString(),
+                    ["{url}"] = $"{Request.Url.Host}/Merits"
+                });
+
                 return Content("Mérito adicionado com sucesso.");
             }
             catch (Exception ex)

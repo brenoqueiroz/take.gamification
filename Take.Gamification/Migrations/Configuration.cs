@@ -18,17 +18,58 @@ namespace Take.Gamification.Migrations
             context.Merits.AddOrUpdate(x => x.Name, new Merit
             {
                 IsVisible = true,
-                Name = "Comprometida",
+                Name = MeritsConst.Comprometimento,
+                Value = 10
+            });
+
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = true,
+                Name = MeritsConst.RespeitoPessoas,
+                Value = 10
+            });
+
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = true,
+                Name = MeritsConst.QualidadeTrabalho,
+                Value = 7
+            });
+
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = true,
+                Name = MeritsConst.Solicito,
+                Value = 5
+            });
+
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = false,
+                Name = MeritsConst.PrimeiroAcesso,
                 Value = 10
             });
 
             context.Merits.AddOrUpdate(x => x.Name, new Merit
             {
                 IsVisible = false,
-                Name = "Primeiro acesso",
-                Value = 1
+                Name = MeritsConst.CadastrarFoto,
+                Value = 30
             });
 
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = false,
+                Name = MeritsConst.ConcederMerito,
+                Value = 2
+            });
+
+            context.Merits.AddOrUpdate(x => x.Name, new Merit
+            {
+                IsVisible = false,
+                Name = MeritsConst.PrimeiroAcessoDia,
+                Value = 1
+            });
             context.SaveChanges();
         }
     }
