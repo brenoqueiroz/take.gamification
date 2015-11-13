@@ -11,7 +11,7 @@ namespace Take.Gamification.Models
         public int Id { get; set; }
         [DisplayName("Nome")]
         public string Name { get; set; }
-        [DisplayName("Emai")]
+        [DisplayName("Email")]
         public string Mail { get; set; }
         public virtual ICollection<UserMerit> Owners { get; set; }
         public virtual ICollection<UserMerit> Targets { get; set; }

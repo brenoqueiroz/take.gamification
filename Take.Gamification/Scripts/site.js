@@ -3,7 +3,7 @@
     $(document).ready(function () {
         $(".from-now").each(function () {
             var time = $(this).html();
-            var fromNow = moment(time).fromNow();
+            var fromNow = moment.utc(time).fromNow();
             $(this).html(fromNow);
         });
 
