@@ -37,6 +37,10 @@ namespace Take.Gamification.Controllers
             var query = _context.UserMerits.Where(x => x.TargetUser.Mail == User.Identity.Name);
             ViewBag.Score = query.Sum(x => (decimal?)x.Value) ?? 0;
             ViewBag.MeritsCount = query.Count();
+
+            ViewBag.Bronze = _context.UserMedals.Count(x => x.UserId == loggedUser.Id && x.Medal.Type == MedalType.Bronze);
+            ViewBag.Silver = _context.UserMedals.Count(x => x.UserId == loggedUser.Id && x.Medal.Type == MedalType.Silver);
+            ViewBag.Gold = _context.UserMedals.Count(x => x.UserId == loggedUser.Id && x.Medal.Type == MedalType.Gold);
             return View();
         }
 

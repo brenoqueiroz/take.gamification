@@ -26,3 +26,9 @@ textarea {
 .body-content {
     margin-top: 25px;
 }
+
+.GeralBronze {
+    width: 20px;
+    height: 20px;
+    background-image: url(imgs/bronze.png)
+}

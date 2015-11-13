@@ -47,6 +47,8 @@ namespace Take.Gamification.Controllers
                 _context.UserMerits.Add(userMerit);
                 _context.SaveChanges();
 
+                GiveMedal(user);
+
                 var concederMerit = _context.Merits.First(x => x.Name.Equals(MeritsConst.ConcederMerito));
                 var concederMeritUser = new UserMerit
                 {
@@ -57,6 +59,8 @@ namespace Take.Gamification.Controllers
 
                 _context.UserMerits.Add(concederMeritUser);
                 _context.SaveChanges();
+
+                GiveMedal(owner);
 
                 SendEmail.SendMerito(user.Mail, new Dictionary<string, string>
                 {
@@ -72,6 +76,29 @@ namespace Take.Gamification.Controllers
             catch (Exception ex)
             {
                 return Content(ex.Message);
+            }
+        }
+
+        private void GiveMedal(UserAccount user)
+        {
+            var query = _context.UserMerits.Where(x => x.TargetUserId == user.Id);
+            var targetUserScore = query.Sum(x => (decimal?)x.Value) ?? 0;
+
+            var medals = _context.Medals.Where(x => x.Value <= targetUserScore).ToList();
+
+            foreach (var medal in medals)
+            {
+                if (!_context.UserMedals.Any(x => x.UserId == user.Id && x.MedalId == medal.Id))
+                {
+                    var userMedal = new UserMedal
+                    {
+                        MedalId = medal.Id,
+                        UserId = user.Id
+                    };
+
+                    _context.UserMedals.Add(userMedal);
+                    _context.SaveChanges();
+                }
             }
         }
     }
