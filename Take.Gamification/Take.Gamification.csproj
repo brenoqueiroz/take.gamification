@@ -242,6 +242,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
+    <None Include="Properties\PublishProfiles\take-valoriza - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\take-valoriza - Web Deploy.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
