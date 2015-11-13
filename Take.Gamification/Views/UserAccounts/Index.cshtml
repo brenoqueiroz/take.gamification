@@ -1,0 +1,56 @@
+﻿@using Take.Gamification.Models;
+@model IEnumerable<UserAccount>
+
+@{
+    ViewBag.Title = "Pessoas";
+}
+
+<h2>Pessoas</h2>
+
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>
+                Avatar
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Gravatar(item.Mail, 50, new { Title = item.Mail = item.Mail, style = "padding: 15px;" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Adicionar merito
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            @foreach (Merit merit in (IEnumerable<Merit>)ViewBag.Merits)
+                            {
+                                <li><a href="#" class="add-merit" merit="@merit.Id" user="@item.Id">@merit.Name (+@merit.Value) </a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

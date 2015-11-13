@@ -13,4 +13,24 @@
             }
         });
     });
+
+    $(".add-merit").click(function () {
+        var meridId = $(this).attr("merit");
+        var userId = $(this).attr("user");
+
+        $.ajax("/UserAccounts/DoMerit?meritId=" + meridId + "&userId=" + userId, {
+            success: function (data) {
+                toastr.success(data);
+            },
+            error: function (data) {
+                toastr.error(data);
+            }
+        });
+    });
+
+    $(document).ajaxStart(function () {
+        $.blockUI({ message: '<h1><img src="/Content/imgs/loading.gif" /></h1>' });
+    }).ajaxStop(function () {
+        $.unblockUI();
+    });
 })();
