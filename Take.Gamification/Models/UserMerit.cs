@@ -20,7 +20,7 @@ namespace Take.Gamification.Models
         public int TargetUserId { get; set; }
         public int MeritId { get; set; }
         public virtual Merit Merit { get; set; }
-        [DisplayName("Valor")]
+        [DisplayName("Ponto")]
         public int Value { get; set; }
         [DisplayName("Data de criação")]
         public DateTimeOffset Created { get; set; }

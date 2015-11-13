@@ -14,7 +14,8 @@ namespace Take.Gamification.Controllers
         // GET: Merits
         public ActionResult Index()
         {
-            return View();
+            var merits = _context.UserMerits.Where(x => x.TargetUser.Mail == User.Identity.Name).OrderByDescending(x => x.Created);
+            return View(merits);
         }
 
         public ActionResult LastMerits()

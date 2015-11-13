@@ -5,15 +5,15 @@
     @Html.Gravatar(@User.Identity.Name, 100, new { Title = @User.Identity.Name, Alt = @User.Identity.Name, style = "float:left; padding: 15px;" })
 
     <p class="lead">Pontuação total: @ViewBag.Score</p>
-    <p class="lead">Quantidade de meritos: @ViewBag.MeritsCount</p>
+    <p class="lead">Quantidade de méritos: @ViewBag.MeritsCount</p>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <h2>Últimas atividades</h2>
+        <h2>Últimas atividades (Geral)</h2>
         @Html.Action("LastMerits", "Merits")
     </div>
     <div class="col-md-6">
-        <h2>Meus meritos</h2>
+        <h2>Meus méritos</h2>
         @Html.Action("MyLastMerits", "Merits")
     </div>
 </div>
