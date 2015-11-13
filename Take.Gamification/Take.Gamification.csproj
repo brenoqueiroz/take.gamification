@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeritsController.cs" />
+    <Compile Include="Controllers\RankController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,6 +251,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Merits\_LastMerits.cshtml" />
     <Content Include="Views\Merits\Index.cshtml" />
+    <Content Include="Views\Rank\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

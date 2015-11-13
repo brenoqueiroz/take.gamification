@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Take.Gamification.Controllers.GroupedUserMerits>
+
+@{
+    ViewBag.Title = "Rank Global";
+}
+
+<h2>Rank Global</h2>
+
+<table class="table data-table">
+    <thead>
+        <tr>
+            <th>
+                Classificação
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Pontuação
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int classification = 0; }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @( ++classification)
+                </td>
+                <td>
+                    @( item?.TargetName ?? "Sistema" )
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
