@@ -3,10 +3,10 @@
     <text>
     <ul class="nav navbar-nav navbar-right">
         <li class="navbar-text">
-            Hello, @User.Identity.Name!
+            @Html.Gravatar(@User.Identity.Name, 45, new { Title = @User.Identity.Name, Alt = @User.Identity.Name })
         </li>
         <li>
-            @Html.ActionLink("Sign out", "SignOut", "Account")
+            @Html.ActionLink("Sair", "SignOut", "Account")
         </li>
     </ul>
     </text>
