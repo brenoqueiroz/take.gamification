@@ -13,9 +13,6 @@
                 Quem fez
             </th>
             <th>
-                Para quem
-            </th>
-            <th>
                 mérito
             </th>
             <th>
@@ -31,10 +28,7 @@
         {
             <tr>
                 <td>
-                    @( item?.OwnerUser?.Name ?? "Sistema" )
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TargetUser.Name)
+                    @( item?.OwnerUser?.Name ?? "Take.Valoriza" )
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Merit.Name)
