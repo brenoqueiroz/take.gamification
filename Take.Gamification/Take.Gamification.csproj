@@ -190,6 +190,7 @@
     <Compile Include="Controllers\MeritsController.cs" />
     <Compile Include="Controllers\RankController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
+    <Content Include="Emails\merito.html" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,6 +210,7 @@
     <Compile Include="Models\GameContext.cs" />
     <Compile Include="Models\Merit.cs" />
     <Compile Include="Models\MeritsConst.cs" />
+    <Compile Include="Models\SendEmail.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserMerit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -257,6 +259,7 @@
     <Content Include="Views\Merits\Index.cshtml" />
     <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\Rank\Index.cshtml" />
+    <Content Include="Views\UserAccounts\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
