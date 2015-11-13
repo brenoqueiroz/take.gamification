@@ -40,35 +40,6 @@ namespace Take.Gamification.Controllers
             return View();
         }
 
-        private void CadastroFoto(UserAccount loggedUser)
-        {
-            var cadastroFoto = _context.UserMerits.FirstOrDefault(x => x.TargetUserId == loggedUser.Id && x.Merit.Name.Equals(MeritsConst.CadastrarFoto));
-            if (cadastroFoto == null)
-            {
-                var hash = HashEmailForGravatar(User.Identity.Name);
-                using (var client = new HttpClient())
-                {
-                    try
-                    {
-                        var response = client.GetByteArrayAsync("https://secure.gravatar.com/avatar/" + hash + "?d=404").Result;
-                        var merit = _context.Merits.First(x => x.Name.Equals(MeritsConst.CadastrarFoto));
-
-                        _context.UserMerits.Add(new UserMerit
-                        {
-                            MeritId = merit.Id,
-                            Value = merit.Value,
-                            TargetUserId = loggedUser.Id
-                        });
-                        _context.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-            }
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -100,6 +71,34 @@ namespace Take.Gamification.Controllers
             }
         }
 
+        private void CadastroFoto(UserAccount loggedUser)
+        {
+            var cadastroFoto = _context.UserMerits.FirstOrDefault(x => x.TargetUserId == loggedUser.Id && x.Merit.Name.Equals(MeritsConst.CadastrarFoto));
+            if (cadastroFoto == null)
+            {
+                var hash = HashEmailForGravatar(User.Identity.Name);
+                using (var client = new HttpClient())
+                {
+                    try
+                    {
+                        var response = client.GetByteArrayAsync("https://secure.gravatar.com/avatar/" + hash + "?d=404").Result;
+                        var merit = _context.Merits.First(x => x.Name.Equals(MeritsConst.CadastrarFoto));
+
+                        _context.UserMerits.Add(new UserMerit
+                        {
+                            MeritId = merit.Id,
+                            Value = merit.Value,
+                            TargetUserId = loggedUser.Id
+                        });
+                        _context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+            }
+        }
         private void PrimeiroAcessoDia(UserAccount loggedUser)
         {
             var primeiroAcessoDia = _context.UserMerits.FirstOrDefault(x => x.TargetUserId == loggedUser.Id

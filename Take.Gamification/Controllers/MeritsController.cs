@@ -23,6 +23,12 @@ namespace Take.Gamification.Controllers
             return View(merits);
         }
 
+        public ActionResult List()
+        {
+            var merits = _context.Merits.OrderBy(x => x.Name);
+            return View(merits);
+        }
+
         public ActionResult LastMerits()
         {
             var merits = _context.UserMerits

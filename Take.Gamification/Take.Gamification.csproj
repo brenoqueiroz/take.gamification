@@ -260,6 +260,7 @@
     <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\Rank\Index.cshtml" />
     <Content Include="Views\UserAccounts\Details.cshtml" />
+    <Content Include="Views\Merits\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

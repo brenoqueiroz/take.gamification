@@ -54,14 +54,14 @@ namespace Take.Gamification.Migrations
             {
                 IsVisible = false,
                 Name = MeritsConst.CadastrarFoto,
-                Value = 10
+                Value = 30
             });
 
             context.Merits.AddOrUpdate(x => x.Name, new Merit
             {
                 IsVisible = false,
                 Name = MeritsConst.ConcederMerito,
-                Value = 1
+                Value = 2
             });
 
             context.Merits.AddOrUpdate(x => x.Name, new Merit

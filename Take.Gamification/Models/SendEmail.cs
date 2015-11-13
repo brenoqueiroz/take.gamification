@@ -33,7 +33,7 @@ namespace Take.Gamification.Models
                     }
 
                     message.Body = html;
-                    client.Send(message.From.ToString(), message.To.ToString(), message.Subject, message.Body);
+                    client.Send(message);
                 }
             }
         }

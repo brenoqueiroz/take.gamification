@@ -63,7 +63,8 @@ namespace Take.Gamification.Controllers
                     ["{Name}"] = user.Name,
                     ["{Owner}"] = owner.Name,
                     ["{Merit}"] = merit.Name,
-                    ["{Value}"] = merit.Value.ToString()
+                    ["{Value}"] = merit.Value.ToString(),
+                    ["{url}"] = $"{Request.Url.Host}/Merits"
                 });
 
                 return Content("Mérito adicionado com sucesso.");
