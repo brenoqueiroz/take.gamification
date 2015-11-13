@@ -14,15 +14,14 @@ namespace Take.Gamification.Controllers
         // GET: Rank
         public ActionResult Index()
         {
-            var merits = _context.UserMerits
-                            .GroupBy(u => u.TargetUserId)
-                            .Select(g => new GroupedUserMerits()
-                             {
-                                 TargetName = g.FirstOrDefault().TargetUser.Name,
-                                 Score = g.Sum(u => u.Value)
-                             })
-                             .OrderByDescending(g => g.Score)
-                             .ToList();
+            var merits = (from u in _context.Users
+                         join um in _context.UserMerits on u.Id equals um.TargetUserId into query
+                         from q in query.DefaultIfEmpty()
+                         group q by u.Name into grouped
+                         select new GroupedUserMerits { TargetName = grouped.Key, Score = grouped.Sum(x => (decimal?)x.Value ?? 0) }
+                         ).ToList().OrderByDescending(m => m.Score);
+                                                     
+
             return View(merits);
         }
     }
@@ -30,6 +29,6 @@ namespace Take.Gamification.Controllers
     public class GroupedUserMerits
     {
         public string TargetName { get; set; }
-        public int Score { get; set; }
+        public decimal Score { get; set; }
     }
 }
