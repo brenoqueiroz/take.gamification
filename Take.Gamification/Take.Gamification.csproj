@@ -253,11 +253,8 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Merits\_LastMerits.cshtml" />
     <Content Include="Views\Merits\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\UserAccounts\Index.cshtml" />
-=======
     <Content Include="Views\Rank\Index.cshtml" />
->>>>>>> 1603f70620f511bd6397fc74f00f15701d91b660
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
