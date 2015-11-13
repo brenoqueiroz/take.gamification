@@ -15,6 +15,5 @@ namespace Take.Gamification.Models
         public string Mail { get; set; }
         public virtual ICollection<UserMerit> Owners { get; set; }
         public virtual ICollection<UserMerit> Targets { get; set; }
-
     }
 }

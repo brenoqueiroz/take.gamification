@@ -41,7 +41,17 @@ namespace Take.Gamification.Controllers
                 _context.UserMerits.Add(userMerit);
                 _context.SaveChanges();
 
-                Thread.Sleep(TimeSpan.FromSeconds(5));
+                var concederMerit = _context.Merits.First(x => x.Name.Equals(MeritsConst.ConcederMerito));
+                var concederMeritUser = new UserMerit
+                {
+                    MeritId = concederMerit.Id,
+                    Value = concederMerit.Value,
+                    TargetUserId = _context.Users.First(x => x.Mail == User.Identity.Name).Id
+                };
+
+                _context.UserMerits.Add(concederMeritUser);
+                _context.SaveChanges();
+
                 return Content("Mérito adicionado com sucesso.");
             }
             catch (Exception ex)

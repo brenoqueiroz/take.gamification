@@ -208,6 +208,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GameContext.cs" />
     <Compile Include="Models\Merit.cs" />
+    <Compile Include="Models\MeritsConst.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\UserMerit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
